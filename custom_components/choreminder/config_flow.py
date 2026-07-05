@@ -1,4 +1,4 @@
-"""Config flow for Choremander integration."""
+"""Config flow for Choreminder integration."""
 from __future__ import annotations
 
 import logging
@@ -27,8 +27,8 @@ from .const import (
 _LOGGER = logging.getLogger(__name__)
 
 
-class ChoremanderConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
-    """Handle a config flow for Choremander."""
+class ChoreminderConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
+    """Handle a config flow for Choreminder."""
 
     VERSION = 1
 
@@ -44,7 +44,7 @@ class ChoremanderConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             self._abort_if_unique_id_configured()
 
             return self.async_create_entry(
-                title="Choremander",
+                title="Choreminder",
                 data={
                     "points_name": user_input.get("points_name", DEFAULT_POINTS_NAME),
                     "points_icon": user_input.get("points_icon", DEFAULT_POINTS_ICON),
@@ -61,7 +61,7 @@ class ChoremanderConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             ),
             errors=errors,
             description_placeholders={
-                "title": "Welcome to Choremander!",
+                "title": "Welcome to Choreminder!",
             },
         )
 
@@ -69,13 +69,13 @@ class ChoremanderConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
     @callback
     def async_get_options_flow(
         config_entry: config_entries.ConfigEntry,
-    ) -> ChoremanderOptionsFlow:
+    ) -> ChoreminderOptionsFlow:
         """Create the options flow."""
-        return ChoremanderOptionsFlow(config_entry)
+        return ChoreminderOptionsFlow(config_entry)
 
 
-class ChoremanderOptionsFlow(config_entries.OptionsFlow):
-    """Handle options flow for Choremander."""
+class ChoreminderOptionsFlow(config_entries.OptionsFlow):
+    """Handle options flow for Choreminder."""
 
     def __init__(self, config_entry: config_entries.ConfigEntry) -> None:
         """Initialize options flow."""

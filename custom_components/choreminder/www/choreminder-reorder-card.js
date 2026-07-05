@@ -1,5 +1,5 @@
 /**
- * Choremander Reorder Card
+ * Choreminder Reorder Card
  * A Lovelace card for reordering chores per child, organized by time category.
  * Clean, parent-friendly UI for managing chore order.
  *
@@ -14,7 +14,7 @@ const LitElement = customElements.get("hui-masonry-view")
 const html = LitElement.prototype.html;
 const css = LitElement.prototype.css;
 
-class ChoremanderReorderCard extends LitElement {
+class ChoreminderReorderCard extends LitElement {
   static get properties() {
     return {
       hass: { type: Object },
@@ -362,7 +362,7 @@ class ChoremanderReorderCard extends LitElement {
 
   setConfig(config) {
     if (!config.entity) {
-      throw new Error("Please define an entity (Choremander overview sensor)");
+      throw new Error("Please define an entity (Choreminder overview sensor)");
     }
     if (!config.child_id) {
       throw new Error("Please define a child_id");
@@ -378,12 +378,12 @@ class ChoremanderReorderCard extends LitElement {
   }
 
   static getConfigElement() {
-    return document.createElement("choremander-reorder-card-editor");
+    return document.createElement("choreminder-reorder-card-editor");
   }
 
   static getStubConfig() {
     return {
-      entity: "sensor.choremander_overview",
+      entity: "sensor.choreminder_overview",
       child_id: "",
       title: "Reorder Chores",
     };
@@ -685,7 +685,7 @@ class ChoremanderReorderCard extends LitElement {
         fullOrder.push(...categoryOrder);
       }
 
-      await this.hass.callService("choremander", "set_chore_order", {
+      await this.hass.callService("choreminder", "set_chore_order", {
         child_id: this.config.child_id,
         chore_order: fullOrder,
       });
@@ -697,13 +697,13 @@ class ChoremanderReorderCard extends LitElement {
         this.hass.callService("persistent_notification", "create", {
           title: "Chore Order Saved",
           message: "The chore order has been updated successfully.",
-          notification_id: "choremander_reorder_success",
+          notification_id: "choreminder_reorder_success",
         });
 
         // Auto-dismiss after 3 seconds
         setTimeout(() => {
           this.hass.callService("persistent_notification", "dismiss", {
-            notification_id: "choremander_reorder_success",
+            notification_id: "choreminder_reorder_success",
           });
         }, 3000);
       }
@@ -713,7 +713,7 @@ class ChoremanderReorderCard extends LitElement {
         this.hass.callService("persistent_notification", "create", {
           title: "Error Saving Order",
           message: `Failed to save chore order: ${error.message}`,
-          notification_id: "choremander_reorder_error",
+          notification_id: "choreminder_reorder_error",
         });
       }
     } finally {
@@ -724,7 +724,7 @@ class ChoremanderReorderCard extends LitElement {
 }
 
 // Card Editor
-class ChoremanderReorderCardEditor extends LitElement {
+class ChoreminderReorderCardEditor extends LitElement {
   static get properties() {
     return {
       hass: { type: Object },
@@ -785,9 +785,9 @@ class ChoremanderReorderCardEditor extends LitElement {
           type="text"
           .value="${this.config.entity || ""}"
           @input="${this._entityChanged}"
-          placeholder="sensor.choremander_overview"
+          placeholder="sensor.choreminder_overview"
         />
-        <small>The Choremander overview sensor entity</small>
+        <small>The Choreminder overview sensor entity</small>
       </div>
 
       <div class="form-group">
@@ -845,20 +845,20 @@ class ChoremanderReorderCardEditor extends LitElement {
 }
 
 // Register the cards
-customElements.define("choremander-reorder-card", ChoremanderReorderCard);
-customElements.define("choremander-reorder-card-editor", ChoremanderReorderCardEditor);
+customElements.define("choreminder-reorder-card", ChoreminderReorderCard);
+customElements.define("choreminder-reorder-card-editor", ChoreminderReorderCardEditor);
 
 // Register with Home Assistant
 window.customCards = window.customCards || [];
 window.customCards.push({
-  type: "choremander-reorder-card",
-  name: "Choremander Reorder Card",
+  type: "choreminder-reorder-card",
+  name: "Choreminder Reorder Card",
   description: "A card for reordering chores per child, organized by time category",
   preview: true,
 });
 
 console.info(
-  "%c CHOREMANDER-REORDER-CARD %c Loaded ",
+  "%c CHOREMINDER-REORDER-CARD %c Loaded ",
   "background: #3498db; color: white; font-weight: bold; border-radius: 4px 0 0 4px;",
   "background: #2ecc71; color: white; font-weight: bold; border-radius: 0 4px 4px 0;"
 );

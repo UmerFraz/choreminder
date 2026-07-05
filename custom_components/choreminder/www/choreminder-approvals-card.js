@@ -1,5 +1,5 @@
 /**
- * Choremander Approvals Card
+ * Choreminder Approvals Card
  * A custom Lovelace card for managing pending chore approvals
  */
 
@@ -10,7 +10,7 @@ const LitElement = customElements.get("hui-masonry-view")
 const html = LitElement.prototype.html;
 const css = LitElement.prototype.css;
 
-class ChoremanderApprovalsCard extends LitElement {
+class ChoreminderApprovalsCard extends LitElement {
   static get properties() {
     return {
       hass: { type: Object },
@@ -289,7 +289,7 @@ class ChoremanderApprovalsCard extends LitElement {
   }
 
   static getConfigElement() {
-    return document.createElement("choremander-approvals-card-editor");
+    return document.createElement("choreminder-approvals-card-editor");
   }
 
   static getStubConfig() {
@@ -581,7 +581,7 @@ class ChoremanderApprovalsCard extends LitElement {
     this.requestUpdate();
 
     try {
-      await this.hass.callService("choremander", service, {
+      await this.hass.callService("choreminder", service, {
         completion_id: completionId,
       });
     } catch (error) {
@@ -589,9 +589,9 @@ class ChoremanderApprovalsCard extends LitElement {
       // Show error toast if available
       if (this.hass.callService) {
         this.hass.callService("persistent_notification", "create", {
-          title: "Choremander Error",
+          title: "Choreminder Error",
           message: `Failed to ${service.replace("_", " ")}: ${error.message}`,
-          notification_id: `choremander_error_${completionId}`,
+          notification_id: `choreminder_error_${completionId}`,
         });
       }
     } finally {
@@ -602,7 +602,7 @@ class ChoremanderApprovalsCard extends LitElement {
 }
 
 // Card Editor
-class ChoremanderApprovalsCardEditor extends LitElement {
+class ChoreminderApprovalsCardEditor extends LitElement {
   static get properties() {
     return {
       hass: { type: Object },
@@ -714,25 +714,25 @@ class ChoremanderApprovalsCardEditor extends LitElement {
 
 // Register the cards
 customElements.define(
-  "choremander-approvals-card",
-  ChoremanderApprovalsCard
+  "choreminder-approvals-card",
+  ChoreminderApprovalsCard
 );
 customElements.define(
-  "choremander-approvals-card-editor",
-  ChoremanderApprovalsCardEditor
+  "choreminder-approvals-card-editor",
+  ChoreminderApprovalsCardEditor
 );
 
 // Register with Home Assistant
 window.customCards = window.customCards || [];
 window.customCards.push({
-  type: "choremander-approvals-card",
-  name: "Choremander Approvals",
-  description: "A card to manage pending chore approvals for Choremander",
+  type: "choreminder-approvals-card",
+  name: "Choreminder Approvals",
+  description: "A card to manage pending chore approvals for Choreminder",
   preview: true,
 });
 
 console.info(
-  "%c CHOREMANDER-APPROVALS-CARD %c Loaded ",
+  "%c CHOREMINDER-APPROVALS-CARD %c Loaded ",
   "background: #4CAF50; color: white; font-weight: bold;",
   "background: #ddd; color: #333;"
 );

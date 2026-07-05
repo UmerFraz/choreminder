@@ -1,4 +1,4 @@
-"""Data coordinator for Choremander integration."""
+"""Data coordinator for Choreminder integration."""
 from __future__ import annotations
 
 from datetime import datetime, timedelta
@@ -11,13 +11,13 @@ from homeassistant.util import dt as dt_util
 
 from .const import DOMAIN
 from .models import Child, Chore, ChoreCompletion, Reward, RewardClaim
-from .storage import ChoremanderStorage
+from .storage import ChoreminderStorage
 
 _LOGGER = logging.getLogger(__name__)
 
 
-class ChoremanderCoordinator(DataUpdateCoordinator):
-    """Coordinator to manage Choremander data."""
+class ChoreminderCoordinator(DataUpdateCoordinator):
+    """Coordinator to manage Choreminder data."""
 
     def __init__(self, hass: HomeAssistant, entry_id: str) -> None:
         """Initialize coordinator."""
@@ -27,7 +27,7 @@ class ChoremanderCoordinator(DataUpdateCoordinator):
             name=DOMAIN,
             update_interval=timedelta(seconds=30),
         )
-        self.storage = ChoremanderStorage(hass, entry_id)
+        self.storage = ChoreminderStorage(hass, entry_id)
         self.entry_id = entry_id
 
     async def async_initialize(self) -> None:

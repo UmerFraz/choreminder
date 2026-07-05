@@ -1,13 +1,13 @@
 {
-  "domain": "choremander",
-  "name": "Choremander",
+  "domain": "choreminder",
+  "name": "Choreminder",
   "codeowners": ["@vinnybad"],
   "config_flow": true,
   "dependencies": ["http", "lovelace", "frontend"],
-  "documentation": "https://github.com/vinnybad/choremander",
+  "documentation": "https://github.com/vinnybad/choreminder",
   "integration_type": "service",
   "iot_class": "local_polling",
-  "issue_tracker": "https://github.com/vinnybad/choremander/issues",
+  "issue_tracker": "https://github.com/vinnybad/choreminder/issues",
   "requirements": [],
   "version": "1.0.4"
 }

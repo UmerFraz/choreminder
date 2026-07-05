@@ -1,4 +1,4 @@
-"""Sensor platform for Choremander integration."""
+"""Sensor platform for Choreminder integration."""
 from __future__ import annotations
 
 from homeassistant.components.sensor import (
@@ -17,7 +17,7 @@ from datetime import datetime
 import logging
 
 from .const import DOMAIN
-from .coordinator import ChoremanderCoordinator
+from .coordinator import ChoreminderCoordinator
 from .models import Child, Chore, Reward
 
 _LOGGER = logging.getLogger(__name__)
@@ -28,8 +28,8 @@ async def async_setup_entry(
     entry: ConfigEntry,
     async_add_entities: AddEntitiesCallback,
 ) -> None:
-    """Set up Choremander sensors."""
-    coordinator: ChoremanderCoordinator = hass.data[DOMAIN][entry.entry_id]
+    """Set up Choreminder sensors."""
+    coordinator: ChoreminderCoordinator = hass.data[DOMAIN][entry.entry_id]
 
     entities: list[SensorEntity] = []
 
@@ -69,7 +69,7 @@ async def async_setup_entry(
 
 
 class ChoremandorBaseSensor(CoordinatorEntity, SensorEntity):
-    """Base class for Choremander sensors."""
+    """Base class for Choreminder sensors."""
 
     def __init__(
         self,
@@ -85,14 +85,14 @@ class ChoremandorBaseSensor(CoordinatorEntity, SensorEntity):
         """Return device info."""
         return DeviceInfo(
             identifiers={(DOMAIN, self._entry.entry_id)},
-            name="Choremander",
-            manufacturer="Choremander",
+            name="Choreminder",
+            manufacturer="Choreminder",
             model="Family Chore Manager",
         )
 
 
 class ChoremandorOverallStatsSensor(ChoremandorBaseSensor):
-    """Sensor for overall Choremander statistics."""
+    """Sensor for overall Choreminder statistics."""
 
     def __init__(
         self,
@@ -102,7 +102,7 @@ class ChoremandorOverallStatsSensor(ChoremandorBaseSensor):
         """Initialize the sensor."""
         super().__init__(coordinator, entry)
         self._attr_unique_id = f"{entry.entry_id}_overall_stats"
-        self._attr_name = "Choremander Overview"
+        self._attr_name = "Choreminder Overview"
 
     @property
     def native_value(self) -> int:

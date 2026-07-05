@@ -12,13 +12,13 @@ if [ ! -d "dev/config/custom_components/hacs" ]; then
   ./dev/setup.sh
 fi
 
-echo "Starting Choremander dev environment..."
+echo "Starting Choreminder dev environment..."
 docker compose -f docker-compose.dev.yml up -d
 
 echo ""
 echo "Home Assistant starting at http://localhost:8123"
 echo "Login: dev / dev"
-echo "Test dashboard: http://localhost:8123/choremander-test"
+echo "Test dashboard: http://localhost:8123/choreminder-test"
 echo ""
 echo "Commands:"
 echo "  ./dev/stop.sh     - Stop the container"

@@ -2,7 +2,7 @@
   "config": {
     "step": {
       "user": {
-        "title": "Welcome to Choremander!",
+        "title": "Welcome to Choreminder!",
         "description": "Set up your family chore management system. You can customize the points currency that children will earn.",
         "data": {
           "points_name": "Points Currency Name (e.g., Stars, Coins, Bucks)",
@@ -14,13 +14,13 @@
       "name_required": "Name is required"
     },
     "abort": {
-      "already_configured": "Choremander is already configured"
+      "already_configured": "Choreminder is already configured"
     }
   },
   "options": {
     "step": {
       "init": {
-        "title": "Choremander Settings",
+        "title": "Choreminder Settings",
         "menu_options": {
           "manage_children": "Manage Children",
           "manage_chores": "Manage Chores",
@@ -168,7 +168,7 @@
       },
       "settings": {
         "title": "Settings",
-        "description": "Configure your Choremander settings",
+        "description": "Configure your Choreminder settings",
         "data": {
           "points_name": "Points Currency Name",
           "points_icon": "Points Icon"

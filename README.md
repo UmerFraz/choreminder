@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="logo.svg" alt="Choremander" width="180">
+  <img src="logo.svg" alt="Choreminder" width="180">
 </p>
 
-<h1 align="center">Choremander</h1>
+<h1 align="center">Choreminder</h1>
 <p align="center">
   <strong>Turn chores into a game your kids actually want to play.</strong><br>
   A Home Assistant integration for family chore management with smart rewards.
@@ -12,7 +12,7 @@
 
 ## Contents
 
-- [Why Choremander?](#why-choremander)
+- [Why Choreminder?](#why-choreminder)
 - [Quick Start](#quick-start)
 - [Features](#features)
 - [Dashboard Cards](#dashboard-cards)
@@ -22,9 +22,9 @@
 
 ---
 
-## Why Choremander?
+## Why Choreminder?
 
-Kids don't naturally love chores. But they *do* love games, progress bars, and earning things. Choremander turns daily responsibilities into a reward system that actually motivates.
+Kids don't naturally love chores. But they *do* love games, progress bars, and earning things. Choreminder turns daily responsibilities into a reward system that actually motivates.
 
 ### Build Better Habits Through Gamification
 
@@ -34,7 +34,7 @@ Kids don't naturally love chores. But they *do* love games, progress bars, and e
 
 ### Encourage the Right Behaviors
 
-Not all chores are equal. Some are easy (brush teeth), others take effort (homework, practice). With Choremander:
+Not all chores are equal. Some are easy (brush teeth), others take effort (homework, practice). With Choreminder:
 
 - **Weight points by difficulty** - Give 1 star for easy tasks, 5 stars for harder ones
 - **Harder chores = faster rewards** - Kids learn that putting in effort pays off
@@ -58,13 +58,13 @@ Not all chores are equal. Some are easy (brush teeth), others take effort (homew
 ### Install via HACS
 
 1. **HACS** → Integrations → ⋮ menu → **Custom repositories**
-2. Add `https://github.com/vinnybad/choremander` as an **Integration**
-3. Search "Choremander" and install
+2. Add `https://github.com/vinnybad/choreminder` as an **Integration**
+3. Search "Choreminder" and install
 4. **Restart Home Assistant**
 
 ### Configure
 
-1. **Settings** → Devices & Services → **Add Integration** → "Choremander"
+1. **Settings** → Devices & Services → **Add Integration** → "Choreminder"
 2. Choose your points currency (Stars, Coins, Bucks, etc.)
 3. Click **Configure** on the integration to manage everything:
 
@@ -106,12 +106,12 @@ Cards auto-register when the integration loads. Just add them to your Lovelace d
 
 ### Adding Cards (Visual Editor)
 
-The easiest way to add Choremander cards:
+The easiest way to add Choreminder cards:
 
 1. Edit your dashboard and click **Add Card**
-2. Search for the card (e.g., "choremander-child-card") or scroll to find it under "Custom"
-3. Alternatively, add a **Manual** card and enter the card type (e.g., `custom:choremander-child-card`)
-4. The card will show a configuration interface - enter `sensor.choremander_overview` in the entity field
+2. Search for the card (e.g., "choreminder-child-card") or scroll to find it under "Custom"
+3. Alternatively, add a **Manual** card and enter the card type (e.g., `custom:choreminder-child-card`)
+4. The card will show a configuration interface - enter `sensor.choreminder_overview` in the entity field
 5. Fill in any additional options (child selection, time of day, etc.) and save
 
 > **Tip:** If the card shows an error after adding, click on it to open the configuration panel. This is normal - it just needs to be configured!
@@ -123,15 +123,15 @@ If you use Lovelace in YAML mode, add these resources to your `configuration.yam
 ```yaml
 lovelace:
   resources:
-    - url: /choremander/choremander-child-card.js
+    - url: /choreminder/choreminder-child-card.js
       type: module
-    - url: /choremander/choremander-rewards-card.js
+    - url: /choreminder/choreminder-rewards-card.js
       type: module
-    - url: /choremander/choremander-approvals-card.js
+    - url: /choreminder/choreminder-approvals-card.js
       type: module
-    - url: /choremander/choremander-points-card.js
+    - url: /choreminder/choreminder-points-card.js
       type: module
-    - url: /choremander/choremander-reorder-card.js
+    - url: /choreminder/choreminder-reorder-card.js
       type: module
 ```
 
@@ -159,14 +159,14 @@ Kid-friendly interface with big colorful buttons and celebration sounds. This is
   <img src="images/kidCard.png" alt="Kid Card" width="300">
 </p>
 
-**Visual Editor:** Add `custom:choremander-child-card`, then configure the entity (`sensor.choremander_overview`), select a child, and optionally filter by time of day.
+**Visual Editor:** Add `custom:choreminder-child-card`, then configure the entity (`sensor.choreminder_overview`), select a child, and optionally filter by time of day.
 
 <details>
 <summary>YAML Example</summary>
 
 ```yaml
-type: custom:choremander-child-card
-entity: sensor.choremander_overview
+type: custom:choreminder-child-card
+entity: sensor.choreminder_overview
 child_id: a8c8376a
 time_category: morning  # Optional: morning, afternoon, evening, night, anytime
 title: My Chores        # Optional
@@ -177,14 +177,14 @@ title: My Chores        # Optional
 
 Shows all available rewards with progress bars. Displays dynamic pricing indicators and jackpot status.
 
-**Visual Editor:** Add `custom:choremander-rewards-card`, configure the entity, and optionally filter to a specific child.
+**Visual Editor:** Add `custom:choreminder-rewards-card`, configure the entity, and optionally filter to a specific child.
 
 <details>
 <summary>YAML Example</summary>
 
 ```yaml
-type: custom:choremander-rewards-card
-entity: sensor.choremander_overview
+type: custom:choreminder-rewards-card
+entity: sensor.choreminder_overview
 child_id: 6ddfca70  # Optional: filter to specific child
 ```
 </details>
@@ -201,14 +201,14 @@ Review and approve (or reject) completed chores that require parent approval. Sh
   <img src="images/pendingApprovals.png" alt="Pending Approvals" width="400">
 </p>
 
-**Visual Editor:** Add `custom:choremander-approvals-card` and configure the entity.
+**Visual Editor:** Add `custom:choreminder-approvals-card` and configure the entity.
 
 <details>
 <summary>YAML Example</summary>
 
 ```yaml
-type: custom:choremander-approvals-card
-entity: sensor.choremander_overview
+type: custom:choreminder-approvals-card
+entity: sensor.choreminder_overview
 ```
 </details>
 
@@ -216,14 +216,14 @@ entity: sensor.choremander_overview
 
 Manually add bonus points (great job today!) or remove points (consequences). Useful for situations outside the normal chore flow.
 
-**Visual Editor:** Add `custom:choremander-points-card` and configure the entity.
+**Visual Editor:** Add `custom:choreminder-points-card` and configure the entity.
 
 <details>
 <summary>YAML Example</summary>
 
 ```yaml
-type: custom:choremander-points-card
-entity: sensor.choremander_overview
+type: custom:choreminder-points-card
+entity: sensor.choreminder_overview
 ```
 </details>
 
@@ -231,21 +231,21 @@ entity: sensor.choremander_overview
 
 Drag-and-drop interface to organize the order chores appear for each child. Customize the experience per kid.
 
-**Visual Editor:** Add `custom:choremander-reorder-card`, configure the entity, and select a child.
+**Visual Editor:** Add `custom:choreminder-reorder-card`, configure the entity, and select a child.
 
 <details>
 <summary>YAML Example</summary>
 
 ```yaml
-type: custom:choremander-reorder-card
-entity: sensor.choremander_overview
+type: custom:choreminder-reorder-card
+entity: sensor.choreminder_overview
 child_id: a8c8376a
 ```
 </details>
 
 ---
 
-> **Note:** All cards require the `sensor.choremander_overview` entity. Child-specific cards also need a child selection.
+> **Note:** All cards require the `sensor.choreminder_overview` entity. Child-specific cards also need a child selection.
 
 ---
 
@@ -259,7 +259,7 @@ If you set "Family Movie Night" to cost 500 stars, how long does that take? A we
 
 ### How Smart Pricing Works
 
-You set **Days to Goal** (e.g., 14 days). Choremander does the math:
+You set **Days to Goal** (e.g., 14 days). Choreminder does the math:
 
 1. Looks at each chore's **point value** and **expected completion rate**
 2. Calculates how many points the child *should* earn per day
@@ -324,7 +324,7 @@ A Docker-based dev environment is included for testing changes without touching 
 #### Development Workflow
 
 ```bash
-# Make changes to Python files in custom_components/choremander/
+# Make changes to Python files in custom_components/choreminder/
 # Then restart to see changes:
 ./dev/restart.sh
 

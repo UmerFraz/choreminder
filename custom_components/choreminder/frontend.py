@@ -1,4 +1,4 @@
-"""Frontend registration for Choremander custom cards."""
+"""Frontend registration for Choreminder custom cards."""
 from __future__ import annotations
 
 import logging
@@ -14,20 +14,20 @@ from .const import DOMAIN
 _LOGGER = logging.getLogger(__name__)
 
 # URL base path for serving static files
-URL_BASE: Final = "/choremander"
+URL_BASE: Final = "/choreminder"
 
 # List of card files to register as Lovelace resources
 CARDS: Final = [
-    "choremander-child-card.js",
-    "choremander-rewards-card.js",
-    "choremander-approvals-card.js",
-    "choremander-points-card.js",
-    "choremander-reorder-card.js",
+    "choreminder-child-card.js",
+    "choreminder-rewards-card.js",
+    "choreminder-approvals-card.js",
+    "choreminder-points-card.js",
+    "choreminder-reorder-card.js",
 ]
 
 # JS modules to load globally (for config flow sound preview)
 GLOBAL_MODULES: Final = [
-    "choremander-config-sounds.js",
+    "choreminder-config-sounds.js",
 ]
 
 # Track if frontend is registered

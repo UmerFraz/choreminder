@@ -1,7 +1,7 @@
-"""Constants for Choremander integration."""
+"""Constants for Choreminder integration."""
 from typing import Final
 
-DOMAIN: Final = "choremander"
+DOMAIN: Final = "choreminder"
 
 # Configuration keys
 CONF_CHILDREN: Final = "children"
@@ -176,7 +176,7 @@ SERVICE_SET_CHORE_ORDER: Final = "set_chore_order"
 SERVICE_PREVIEW_SOUND: Final = "preview_sound"
 
 # Events
-EVENT_PREVIEW_SOUND: Final = "choremander_preview_sound"
+EVENT_PREVIEW_SOUND: Final = "choreminder_preview_sound"
 
 # Attributes
 ATTR_CHILD_ID: Final = "child_id"

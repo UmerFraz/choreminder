@@ -11,22 +11,22 @@
           "path": "default",
           "cards": [
             {
-              "type": "custom:choremander-child-card",
-              "entity": "sensor.choremander_overview",
+              "type": "custom:choreminder-child-card",
+              "entity": "sensor.choreminder_overview",
               "child_id": "child_radha",
               "time_category": "morning",
               "title": "Morning Chores"
             },
             {
-              "type": "custom:choremander-child-card",
-              "entity": "sensor.choremander_overview",
+              "type": "custom:choreminder-child-card",
+              "entity": "sensor.choreminder_overview",
               "child_id": "child_radha",
               "time_category": "evening",
               "title": "Evening Chores"
             },
             {
-              "type": "custom:choremander-rewards-card",
-              "entity": "sensor.choremander_overview",
+              "type": "custom:choreminder-rewards-card",
+              "entity": "sensor.choreminder_overview",
               "child_id": "child_radha",
               "title": "My Rewards"
             }

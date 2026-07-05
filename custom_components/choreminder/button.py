@@ -1,4 +1,4 @@
-"""Button platform for Choremander integration."""
+"""Button platform for Choreminder integration."""
 from __future__ import annotations
 
 import logging
@@ -11,7 +11,7 @@ from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from .const import DOMAIN
-from .coordinator import ChoremanderCoordinator
+from .coordinator import ChoreminderCoordinator
 from .models import Child, Chore, Reward
 
 _LOGGER = logging.getLogger(__name__)
@@ -22,8 +22,8 @@ async def async_setup_entry(
     entry: ConfigEntry,
     async_add_entities: AddEntitiesCallback,
 ) -> None:
-    """Set up Choremander buttons."""
-    coordinator: ChoremanderCoordinator = hass.data[DOMAIN][entry.entry_id]
+    """Set up Choreminder buttons."""
+    coordinator: ChoreminderCoordinator = hass.data[DOMAIN][entry.entry_id]
 
     entities: list[ButtonEntity] = []
 
@@ -60,7 +60,7 @@ async def async_setup_entry(
 
 
 class ChoremandorBaseButton(CoordinatorEntity, ButtonEntity):
-    """Base class for Choremander buttons."""
+    """Base class for Choreminder buttons."""
 
     def __init__(
         self,
@@ -76,8 +76,8 @@ class ChoremandorBaseButton(CoordinatorEntity, ButtonEntity):
         """Return device info."""
         return DeviceInfo(
             identifiers={(DOMAIN, self._entry.entry_id)},
-            name="Choremander",
-            manufacturer="Choremander",
+            name="Choreminder",
+            manufacturer="Choreminder",
             model="Family Chore Manager",
         )
 

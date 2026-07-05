@@ -1,4 +1,4 @@
-"""Data models for Choremander integration."""
+"""Data models for Choreminder integration."""
 from __future__ import annotations
 
 from dataclasses import dataclass, field

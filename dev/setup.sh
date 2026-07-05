@@ -4,7 +4,7 @@ set -e
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 CONFIG_DIR="$SCRIPT_DIR/config"
 
-echo "Setting up Choremander dev environment..."
+echo "Setting up Choreminder dev environment..."
 
 # Create .storage directory if needed
 mkdir -p "$CONFIG_DIR/.storage"

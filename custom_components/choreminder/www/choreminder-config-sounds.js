@@ -1,5 +1,5 @@
 /**
- * Choremander Config Flow Sound Preview
+ * Choreminder Config Flow Sound Preview
  * Plays sound preview when the completion_sound dropdown value changes
  * in the config flow (add/edit chore screens).
  */
@@ -24,7 +24,7 @@
   }
 
   // ============== SOUND IMPLEMENTATIONS ==============
-  // These are copies from choremander-child-card.js to keep this file standalone
+  // These are copies from choreminder-child-card.js to keep this file standalone
 
   function playCoinSound(ctx, startTime) {
     const masterGain = ctx.createGain();
@@ -410,7 +410,7 @@
    */
   function playSound(soundName) {
     if (!soundName || soundName === 'none') {
-      console.debug('[Choremander Config] No sound to play');
+      console.debug('[Choreminder Config] No sound to play');
       return;
     }
 
@@ -428,11 +428,11 @@
         case 'fart': playFartSound(ctx, now); break;
         case 'fart_long': playFartLongSound(ctx, now); break;
         default:
-          console.warn(`[Choremander Config] Unknown sound: ${soundName}`);
+          console.warn(`[Choreminder Config] Unknown sound: ${soundName}`);
           playCoinSound(ctx, now);
       }
     } catch (e) {
-      console.warn('[Choremander Config] Error playing sound:', e);
+      console.warn('[Choreminder Config] Error playing sound:', e);
     }
   }
 
@@ -466,15 +466,15 @@
    * Attach change listener to a select element
    */
   function attachSoundChangeListener(element) {
-    if (element.dataset.choremanderSoundListener) return;
-    element.dataset.choremanderSoundListener = 'true';
+    if (element.dataset.choreminderSoundListener) return;
+    element.dataset.choreminderSoundListener = 'true';
 
     // Listen for various change events
     const handleChange = (e) => {
       const value = e.target?.value || e.detail?.value;
       const soundValue = textToSoundValue(value) || value;
 
-      console.debug('[Choremander Config] Sound changed to:', soundValue);
+      console.debug('[Choreminder Config] Sound changed to:', soundValue);
 
       if (soundValue && soundValue !== 'none' && VALID_SOUNDS.includes(soundValue)) {
         playSound(soundValue);
@@ -496,7 +496,7 @@
       }
     });
 
-    console.debug('[Choremander Config] Attached sound change listener to element');
+    console.debug('[Choreminder Config] Attached sound change listener to element');
   }
 
   /**
@@ -570,8 +570,8 @@
 
       if (shouldScan) {
         // Debounce scanning
-        clearTimeout(window._choremanderScanTimeout);
-        window._choremanderScanTimeout = setTimeout(findAndEnhanceSoundSelectors, 100);
+        clearTimeout(window._choreminderScanTimeout);
+        window._choreminderScanTimeout = setTimeout(findAndEnhanceSoundSelectors, 100);
       }
     });
 
@@ -580,7 +580,7 @@
       subtree: true,
     });
 
-    console.debug('[Choremander Config] Sound change observer started');
+    console.debug('[Choreminder Config] Sound change observer started');
   }
 
   // Initialize
@@ -600,5 +600,5 @@
 
   window.addEventListener('load', () => setTimeout(init, 500));
 
-  console.info('[Choremander] Config sound preview module loaded - sounds will play on selection change');
+  console.info('[Choreminder] Config sound preview module loaded - sounds will play on selection change');
 })();

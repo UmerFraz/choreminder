@@ -1,4 +1,4 @@
-"""Storage management for Choremander integration."""
+"""Storage management for Choreminder integration."""
 from __future__ import annotations
 
 import logging
@@ -16,8 +16,8 @@ STORAGE_VERSION = 1
 STORAGE_KEY = f"{DOMAIN}.storage"
 
 
-class ChoremanderStorage:
-    """Manage Choremander data storage."""
+class ChoreminderStorage:
+    """Manage Choreminder data storage."""
 
     def __init__(self, hass: HomeAssistant, entry_id: str) -> None:
         """Initialize storage."""

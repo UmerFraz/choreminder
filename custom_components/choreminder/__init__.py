@@ -1,4 +1,4 @@
-"""Choremander - Family Chore Manager for Home Assistant."""
+"""Choreminder - Family Chore Manager for Home Assistant."""
 from __future__ import annotations
 
 import logging
@@ -27,7 +27,7 @@ from .const import (
     SERVICE_REMOVE_POINTS,
     SERVICE_SET_CHORE_ORDER,
 )
-from .coordinator import ChoremanderCoordinator
+from .coordinator import ChoreminderCoordinator
 from .frontend import async_register_cards, async_register_frontend
 
 _LOGGER = logging.getLogger(__name__)
@@ -39,10 +39,10 @@ SERVICES_REGISTERED = "services_registered"
 
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
-    """Set up Choremander from a config entry."""
+    """Set up Choreminder from a config entry."""
     hass.data.setdefault(DOMAIN, {})
 
-    coordinator = ChoremanderCoordinator(hass, entry.entry_id)
+    coordinator = ChoreminderCoordinator(hass, entry.entry_id)
     await coordinator.async_initialize()
 
     # Store initial settings from config entry
@@ -84,22 +84,22 @@ async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     return unload_ok
 
 
-def _get_coordinator(hass: HomeAssistant) -> ChoremanderCoordinator | None:
+def _get_coordinator(hass: HomeAssistant) -> ChoreminderCoordinator | None:
     """Get the first available coordinator."""
     for key, value in hass.data.get(DOMAIN, {}).items():
-        if key != SERVICES_REGISTERED and isinstance(value, ChoremanderCoordinator):
+        if key != SERVICES_REGISTERED and isinstance(value, ChoreminderCoordinator):
             return value
     return None
 
 
 async def _async_register_services(hass: HomeAssistant) -> None:
-    """Register Choremander services."""
+    """Register Choreminder services."""
 
     async def handle_complete_chore(call: ServiceCall) -> None:
         """Handle the complete_chore service call."""
         coordinator = _get_coordinator(hass)
         if not coordinator:
-            _LOGGER.error("No Choremander coordinator available")
+            _LOGGER.error("No Choreminder coordinator available")
             return
         chore_id = call.data[ATTR_CHORE_ID]
         child_id = call.data[ATTR_CHILD_ID]
@@ -109,7 +109,7 @@ async def _async_register_services(hass: HomeAssistant) -> None:
         """Handle the approve_chore service call."""
         coordinator = _get_coordinator(hass)
         if not coordinator:
-            _LOGGER.error("No Choremander coordinator available")
+            _LOGGER.error("No Choreminder coordinator available")
             return
         completion_id = call.data["completion_id"]
         await coordinator.async_approve_chore(completion_id)
@@ -118,7 +118,7 @@ async def _async_register_services(hass: HomeAssistant) -> None:
         """Handle the reject_chore service call."""
         coordinator = _get_coordinator(hass)
         if not coordinator:
-            _LOGGER.error("No Choremander coordinator available")
+            _LOGGER.error("No Choreminder coordinator available")
             return
         completion_id = call.data["completion_id"]
         await coordinator.async_reject_chore(completion_id)
@@ -127,7 +127,7 @@ async def _async_register_services(hass: HomeAssistant) -> None:
         """Handle the claim_reward service call."""
         coordinator = _get_coordinator(hass)
         if not coordinator:
-            _LOGGER.error("No Choremander coordinator available")
+            _LOGGER.error("No Choreminder coordinator available")
             return
         reward_id = call.data[ATTR_REWARD_ID]
         child_id = call.data[ATTR_CHILD_ID]
@@ -137,7 +137,7 @@ async def _async_register_services(hass: HomeAssistant) -> None:
         """Handle the approve_reward service call."""
         coordinator = _get_coordinator(hass)
         if not coordinator:
-            _LOGGER.error("No Choremander coordinator available")
+            _LOGGER.error("No Choreminder coordinator available")
             return
         claim_id = call.data["claim_id"]
         await coordinator.async_approve_reward(claim_id)
@@ -146,7 +146,7 @@ async def _async_register_services(hass: HomeAssistant) -> None:
         """Handle the add_points service call."""
         coordinator = _get_coordinator(hass)
         if not coordinator:
-            _LOGGER.error("No Choremander coordinator available")
+            _LOGGER.error("No Choreminder coordinator available")
             return
         child_id = call.data[ATTR_CHILD_ID]
         points = call.data[ATTR_POINTS]
@@ -157,7 +157,7 @@ async def _async_register_services(hass: HomeAssistant) -> None:
         """Handle the remove_points service call."""
         coordinator = _get_coordinator(hass)
         if not coordinator:
-            _LOGGER.error("No Choremander coordinator available")
+            _LOGGER.error("No Choreminder coordinator available")
             return
         child_id = call.data[ATTR_CHILD_ID]
         points = call.data[ATTR_POINTS]
@@ -168,7 +168,7 @@ async def _async_register_services(hass: HomeAssistant) -> None:
         """Handle the set_chore_order service call."""
         coordinator = _get_coordinator(hass)
         if not coordinator:
-            _LOGGER.error("No Choremander coordinator available")
+            _LOGGER.error("No Choreminder coordinator available")
             return
         child_id = call.data[ATTR_CHILD_ID]
         chore_order = call.data[ATTR_CHORE_ORDER]
@@ -272,7 +272,7 @@ async def _async_register_services(hass: HomeAssistant) -> None:
 
 
 def _async_unregister_services(hass: HomeAssistant) -> None:
-    """Unregister Choremander services."""
+    """Unregister Choreminder services."""
     services = [
         SERVICE_COMPLETE_CHORE,
         SERVICE_APPROVE_CHORE,

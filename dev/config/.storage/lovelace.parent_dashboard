@@ -11,30 +11,30 @@
           "path": "default",
           "cards": [
             {
-              "type": "custom:choremander-approvals-card",
-              "entity": "sensor.choremander_overview",
+              "type": "custom:choreminder-approvals-card",
+              "entity": "sensor.choreminder_overview",
               "title": "Pending Approvals"
             },
             {
-              "type": "custom:choremander-points-card",
-              "entity": "sensor.choremander_overview",
+              "type": "custom:choreminder-points-card",
+              "entity": "sensor.choreminder_overview",
               "title": "Manage Points"
             },
             {
-              "type": "custom:choremander-reorder-card",
-              "entity": "sensor.choremander_overview",
+              "type": "custom:choreminder-reorder-card",
+              "entity": "sensor.choreminder_overview",
               "child_id": "child_krishna",
               "title": "Reorder Krishna's Chores"
             },
             {
-              "type": "custom:choremander-reorder-card",
-              "entity": "sensor.choremander_overview",
+              "type": "custom:choreminder-reorder-card",
+              "entity": "sensor.choreminder_overview",
               "child_id": "child_radha",
               "title": "Reorder Radha's Chores"
             },
             {
-              "type": "custom:choremander-rewards-card",
-              "entity": "sensor.choremander_overview",
+              "type": "custom:choreminder-rewards-card",
+              "entity": "sensor.choreminder_overview",
               "title": "All Rewards"
             }
           ]

@@ -1,4 +1,4 @@
-"""Binary sensor platform for Choremander integration."""
+"""Binary sensor platform for Choreminder integration."""
 from __future__ import annotations
 
 from homeassistant.components.binary_sensor import (
@@ -12,7 +12,7 @@ from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from .const import DOMAIN
-from .coordinator import ChoremanderCoordinator
+from .coordinator import ChoreminderCoordinator
 
 
 async def async_setup_entry(
@@ -20,8 +20,8 @@ async def async_setup_entry(
     entry: ConfigEntry,
     async_add_entities: AddEntitiesCallback,
 ) -> None:
-    """Set up Choremander binary sensors."""
-    coordinator: ChoremanderCoordinator = hass.data[DOMAIN][entry.entry_id]
+    """Set up Choreminder binary sensors."""
+    coordinator: ChoreminderCoordinator = hass.data[DOMAIN][entry.entry_id]
 
     entities: list[BinarySensorEntity] = [
         HasPendingApprovalsBinarySensor(coordinator, entry),
@@ -31,7 +31,7 @@ async def async_setup_entry(
 
 
 class ChoremandorBaseBinarySensor(CoordinatorEntity, BinarySensorEntity):
-    """Base class for Choremander binary sensors."""
+    """Base class for Choreminder binary sensors."""
 
     def __init__(
         self,
@@ -47,8 +47,8 @@ class ChoremandorBaseBinarySensor(CoordinatorEntity, BinarySensorEntity):
         """Return device info."""
         return DeviceInfo(
             identifiers={(DOMAIN, self._entry.entry_id)},
-            name="Choremander",
-            manufacturer="Choremander",
+            name="Choreminder",
+            manufacturer="Choreminder",
             model="Family Chore Manager",
         )
 

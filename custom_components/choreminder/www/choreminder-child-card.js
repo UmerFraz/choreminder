@@ -1,5 +1,5 @@
 /**
- * Choremander Child Card
+ * Choreminder Child Card
  * A FUN, kid-friendly Lovelace card for completing chores!
  * Designed for children ages 5-10 with big buttons, bright colors, and celebrations!
  *
@@ -22,7 +22,7 @@ const LitElement = customElements.get("hui-masonry-view")
 const html = LitElement.prototype.html;
 const css = LitElement.prototype.css;
 
-class ChoremanderChildCard extends LitElement {
+class ChoreminderChildCard extends LitElement {
   static get properties() {
     return {
       hass: { type: Object },
@@ -69,7 +69,7 @@ class ChoremanderChildCard extends LitElement {
   _playSound(soundName) {
     // Don't play if sound is "none" or not specified
     if (!soundName || soundName === 'none') {
-      console.debug('[Choremander] Sound disabled for this chore');
+      console.debug('[Choreminder] Sound disabled for this chore');
       return;
     }
 
@@ -132,11 +132,11 @@ class ChoremanderChildCard extends LitElement {
           this._playAudioFile(`fart${randomFartNum}.mp3`);
           break;
         default:
-          console.warn(`[Choremander] Unknown sound: ${soundName}, playing coin`);
+          console.warn(`[Choreminder] Unknown sound: ${soundName}, playing coin`);
           this._playCoinSound(ctx, now);
       }
     } catch (e) {
-      console.warn('[Choremander] Error playing sound:', e);
+      console.warn('[Choreminder] Error playing sound:', e);
     }
   }
 
@@ -388,13 +388,13 @@ class ChoremanderChildCard extends LitElement {
   _playAudioFile(filename) {
     try {
       // Build the URL to the audio file in the www folder
-      const audio = new Audio(`/local/choremander/${filename}`);
+      const audio = new Audio(`/local/choreminder/${filename}`);
       audio.volume = 1.0;
       audio.play().catch(e => {
-        console.warn('[Choremander] Error playing audio file:', e);
+        console.warn('[Choreminder] Error playing audio file:', e);
       });
     } catch (e) {
-      console.warn('[Choremander] Error creating audio element:', e);
+      console.warn('[Choreminder] Error creating audio element:', e);
     }
   }
 
@@ -1111,7 +1111,7 @@ class ChoremanderChildCard extends LitElement {
 
   setConfig(config) {
     if (!config.entity) {
-      throw new Error("Please define an entity (choremander overview sensor)");
+      throw new Error("Please define an entity (choreminder overview sensor)");
     }
     if (!config.child_id) {
       throw new Error("Please define a child_id");
@@ -1130,12 +1130,12 @@ class ChoremanderChildCard extends LitElement {
   }
 
   static getConfigElement() {
-    return document.createElement("choremander-child-card-editor");
+    return document.createElement("choreminder-child-card-editor");
   }
 
   static getStubConfig() {
     return {
-      entity: "sensor.choremander_overview",
+      entity: "sensor.choreminder_overview",
       child_id: "",
       time_category: "morning",
     };
@@ -1179,7 +1179,7 @@ class ChoremanderChildCard extends LitElement {
 
     // Log raw data for debugging assignment issues
     console.debug(
-      `[Choremander] Rendering card for child "${child.name}" (${child.id}), time_category="${this.config.time_category}"`,
+      `[Choreminder] Rendering card for child "${child.name}" (${child.id}), time_category="${this.config.time_category}"`,
       `\n  Total chores in entity: ${allChores.length}`,
       `\n  Children in entity:`, children.map(c => ({id: c.id, name: c.name}))
     );
@@ -1197,13 +1197,13 @@ class ChoremanderChildCard extends LitElement {
         isArray: Array.isArray(c.assigned_to)
       }))
     };
-    console.log('[Choremander DEBUG]', JSON.stringify(debugInfo, null, 2));
+    console.log('[Choreminder DEBUG]', JSON.stringify(debugInfo, null, 2));
 
     const childChores = this._filterAndSortChores(allChores, child);
 
     // Log the filtering result
     console.debug(
-      `[Choremander] After filtering: showing ${childChores.length} of ${allChores.length} chores for child "${child.name}" (${child.id})`
+      `[Choreminder] After filtering: showing ${childChores.length} of ${allChores.length} chores for child "${child.name}" (${child.id})`
     );
 
     // Store debug info for rendering
@@ -1234,7 +1234,7 @@ class ChoremanderChildCard extends LitElement {
     // Debug logging to help troubleshoot daily limit issues
     if (allCompletions.length > 0 || todaysCompletions.length > 0) {
       console.debug(
-        `[Choremander] Child "${child.name}" (${child.id}): ` +
+        `[Choreminder] Child "${child.name}" (${child.id}): ` +
         `allCompletions = ${allCompletions.length}, todaysCompletions = ${todaysCompletions.length}`,
         { allCompletions, todaysCompletions }
       );
@@ -1315,7 +1315,7 @@ class ChoremanderChildCard extends LitElement {
 
     // Debug logging to diagnose assignment filtering issues
     console.debug(
-      `[Choremander] Filtering chores for child: id="${childId}" (type: ${typeof childId}), name="${childName}", config.child_id="${this.config.child_id}"`,
+      `[Choreminder] Filtering chores for child: id="${childId}" (type: ${typeof childId}), name="${childName}", config.child_id="${this.config.child_id}"`,
       `\n  All chores:`, chores.map(c => ({name: c.name, assigned_to: c.assigned_to, assigned_to_type: typeof c.assigned_to}))
     );
 
@@ -1346,7 +1346,7 @@ class ChoremanderChildCard extends LitElement {
 
       // Debug logging for each chore with assignments (always log to help debug)
       console.debug(
-        `[Choremander] Chore "${chore.name}": ` +
+        `[Choreminder] Chore "${chore.name}": ` +
         `assigned_to=${JSON.stringify(assignedTo)} (isArray: ${Array.isArray(chore.assigned_to)}), ` +
         `childId="${childId}", isAssignedToAll=${isAssignedToAll}, ` +
         `isAssignedToChild=${isAssignedToChild}, matchesTime=${matchesTime}, ` +
@@ -1358,7 +1358,7 @@ class ChoremanderChildCard extends LitElement {
 
     // Debug: Log the filtered results
     console.debug(
-      `[Choremander] FINAL filtered chores for "${childName}" (${childId}): ${filteredChores.length} of ${chores.length}`,
+      `[Choreminder] FINAL filtered chores for "${childName}" (${childId}): ${filteredChores.length} of ${chores.length}`,
       filteredChores.map(c => c.name)
     );
 
@@ -1524,7 +1524,7 @@ class ChoremanderChildCard extends LitElement {
     // Debug logging to help troubleshoot daily limit issues
     if (childCompletionsToday.length > 0 || isCompletedForToday || hasOptimisticCompletion) {
       console.debug(
-        `[Choremander] Chore "${chore.name}" (${chore.id}): ` +
+        `[Choreminder] Chore "${chore.name}" (${chore.id}): ` +
         `completions today = ${completionsToday}, daily limit = ${dailyLimit}, ` +
         `completed = ${isCompletedForToday}, optimistic = ${!!hasOptimisticCompletion}, ` +
         `completions:`,
@@ -1628,7 +1628,7 @@ class ChoremanderChildCard extends LitElement {
 
     // Check if already loading for this chore (prevent double-clicks during loading)
     if (this._loading[chore.id]) {
-      console.debug(`[Choremander] Chore "${chore.name}" is already loading, ignoring click`);
+      console.debug(`[Choreminder] Chore "${chore.name}" is already loading, ignoring click`);
       return;
     }
 
@@ -1651,7 +1651,7 @@ class ChoremanderChildCard extends LitElement {
     // Guard: If daily limit already reached, don't allow another completion
     if (totalCompletions >= dailyLimit) {
       console.debug(
-        `[Choremander] Daily limit already reached for chore "${chore.name}": ` +
+        `[Choreminder] Daily limit already reached for chore "${chore.name}": ` +
         `${actualCompletionsToday} actual + ${existingOptimisticCount} optimistic >= ${dailyLimit} limit`
       );
       this.requestUpdate(); // Force re-render to show completed state
@@ -1675,7 +1675,7 @@ class ChoremanderChildCard extends LitElement {
     this.requestUpdate();
 
     try {
-      await this.hass.callService("choremander", "complete_chore", {
+      await this.hass.callService("choreminder", "complete_chore", {
         chore_id: chore.id,
         child_id: child.id,
       });
@@ -1730,7 +1730,7 @@ class ChoremanderChildCard extends LitElement {
         this.hass.callService("persistent_notification", "create", {
           title: "Oops!",
           message: `Something went wrong: ${error.message}`,
-          notification_id: `choremander_error_${chore.id}`,
+          notification_id: `choreminder_error_${chore.id}`,
         });
       }
     } finally {
@@ -1742,7 +1742,7 @@ class ChoremanderChildCard extends LitElement {
   async _handleUndo(chore, child, childCompletionsToday) {
     // Check if already loading for this chore (prevent double-clicks during loading)
     if (this._loading[chore.id]) {
-      console.debug(`[Choremander] Chore "${chore.name}" is already loading, ignoring undo click`);
+      console.debug(`[Choreminder] Chore "${chore.name}" is already loading, ignoring undo click`);
       return;
     }
 
@@ -1758,22 +1758,22 @@ class ChoremanderChildCard extends LitElement {
     // Check for completion_id (from sensor) or id (fallback)
     const completionId = completionToUndo?.completion_id || completionToUndo?.id;
     if (!completionToUndo || !completionId) {
-      console.warn(`[Choremander] No completion found to undo for chore "${chore.name}"`, sortedCompletions);
+      console.warn(`[Choreminder] No completion found to undo for chore "${chore.name}"`, sortedCompletions);
       return;
     }
 
-    console.debug(`[Choremander] Undoing completion "${completionId}" for chore "${chore.name}"`);
+    console.debug(`[Choreminder] Undoing completion "${completionId}" for chore "${chore.name}"`);
 
     this._loading = { ...this._loading, [chore.id]: true };
     this.requestUpdate();
 
     try {
       // Call the reject_chore service to remove the completion
-      await this.hass.callService("choremander", "reject_chore", {
+      await this.hass.callService("choreminder", "reject_chore", {
         completion_id: completionId,
       });
 
-      console.debug(`[Choremander] Successfully undid completion for chore "${chore.name}"`);
+      console.debug(`[Choreminder] Successfully undid completion for chore "${chore.name}"`);
 
       // Play undo sound (sad/descending tone)
       const undoSoundToPlay = this.config.undo_sound || 'undo';
@@ -1793,7 +1793,7 @@ class ChoremanderChildCard extends LitElement {
         this.hass.callService("persistent_notification", "create", {
           title: "Oops!",
           message: `Couldn't undo: ${error.message}`,
-          notification_id: `choremander_undo_error_${chore.id}`,
+          notification_id: `choreminder_undo_error_${chore.id}`,
         });
       }
     } finally {
@@ -1828,7 +1828,7 @@ class ChoremanderChildCard extends LitElement {
 }
 
 // Card Editor
-class ChoremanderChildCardEditor extends LitElement {
+class ChoreminderChildCardEditor extends LitElement {
   static get properties() {
     return {
       hass: { type: Object },
@@ -1889,9 +1889,9 @@ class ChoremanderChildCardEditor extends LitElement {
           type="text"
           .value="${this.config.entity || ""}"
           @input="${this._entityChanged}"
-          placeholder="sensor.choremander_overview"
+          placeholder="sensor.choreminder_overview"
         />
-        <small>The Choremander overview sensor entity</small>
+        <small>The Choreminder overview sensor entity</small>
       </div>
 
       <div class="form-group">
@@ -1980,20 +1980,20 @@ class ChoremanderChildCardEditor extends LitElement {
 }
 
 // Register the cards
-customElements.define("choremander-child-card", ChoremanderChildCard);
-customElements.define("choremander-child-card-editor", ChoremanderChildCardEditor);
+customElements.define("choreminder-child-card", ChoreminderChildCard);
+customElements.define("choreminder-child-card-editor", ChoreminderChildCardEditor);
 
 // Register with Home Assistant
 window.customCards = window.customCards || [];
 window.customCards.push({
-  type: "choremander-child-card",
-  name: "Choremander Child Card",
+  type: "choreminder-child-card",
+  name: "Choreminder Child Card",
   description: "A fun, kid-friendly card for children to complete their chores!",
   preview: true,
 });
 
 console.info(
-  "%c CHOREMANDER-CHILD-CARD %c v0.0.1 %c For Kids! ",
+  "%c CHOREMINDER-CHILD-CARD %c v0.0.1 %c For Kids! ",
   "background: #9b59b6; color: white; font-weight: bold; border-radius: 4px 0 0 4px;",
   "background: #2ecc71; color: white; font-weight: bold;",
   "background: #f1c40f; color: #333; font-weight: bold; border-radius: 0 4px 4px 0;"

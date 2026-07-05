@@ -1,5 +1,5 @@
 /**
- * Choremander Rewards Card
+ * Choreminder Rewards Card
  * A Lovelace card for displaying available rewards.
  * Shows rewards in a vertical list with star cost, name, description, and progress gauges.
  * Supports regular rewards, Jackpot rewards, and Dynamic rewards (goal-based pricing).
@@ -15,7 +15,7 @@ const LitElement = customElements.get("hui-masonry-view")
 const html = LitElement.prototype.html;
 const css = LitElement.prototype.css;
 
-class ChoremanderRewardsCard extends LitElement {
+class ChoreminderRewardsCard extends LitElement {
   static get properties() {
     return {
       hass: { type: Object },
@@ -554,7 +554,7 @@ class ChoremanderRewardsCard extends LitElement {
 
   setConfig(config) {
     if (!config.entity) {
-      throw new Error("Please define an entity (choremander overview sensor)");
+      throw new Error("Please define an entity (choreminder overview sensor)");
     }
     this.config = {
       title: "Rewards",
@@ -569,12 +569,12 @@ class ChoremanderRewardsCard extends LitElement {
   }
 
   static getConfigElement() {
-    return document.createElement("choremander-rewards-card-editor");
+    return document.createElement("choreminder-rewards-card-editor");
   }
 
   static getStubConfig() {
     return {
-      entity: "sensor.choremander_overview",
+      entity: "sensor.choreminder_overview",
       title: "Rewards",
       child_id: null,
       show_child_badges: true,
@@ -657,7 +657,7 @@ class ChoremanderRewardsCard extends LitElement {
       <div class="empty-state">
         <ha-icon icon="mdi:gift-off-outline"></ha-icon>
         <div class="message">No Rewards Available</div>
-        <div class="submessage">Add rewards in Choremander settings</div>
+        <div class="submessage">Add rewards in Choreminder settings</div>
       </div>
     `;
   }
@@ -882,7 +882,7 @@ class ChoremanderRewardsCard extends LitElement {
 }
 
 // Card Editor for visual configuration in Lovelace UI
-class ChoremanderRewardsCardEditor extends LitElement {
+class ChoreminderRewardsCardEditor extends LitElement {
   static get properties() {
     return {
       hass: { type: Object },
@@ -963,9 +963,9 @@ class ChoremanderRewardsCardEditor extends LitElement {
           type="text"
           .value="${this.config.entity || ""}"
           @input="${this._entityChanged}"
-          placeholder="sensor.choremander_overview"
+          placeholder="sensor.choreminder_overview"
         />
-        <small>The Choremander overview sensor entity</small>
+        <small>The Choreminder overview sensor entity</small>
       </div>
 
       <div class="form-group">
@@ -1040,20 +1040,20 @@ class ChoremanderRewardsCardEditor extends LitElement {
 }
 
 // Register the cards
-customElements.define("choremander-rewards-card", ChoremanderRewardsCard);
-customElements.define("choremander-rewards-card-editor", ChoremanderRewardsCardEditor);
+customElements.define("choreminder-rewards-card", ChoreminderRewardsCard);
+customElements.define("choreminder-rewards-card-editor", ChoreminderRewardsCardEditor);
 
 // Register with Home Assistant
 window.customCards = window.customCards || [];
 window.customCards.push({
-  type: "choremander-rewards-card",
-  name: "Choremander Rewards Card",
+  type: "choreminder-rewards-card",
+  name: "Choreminder Rewards Card",
   description: "A card displaying available rewards with star costs",
   preview: true,
 });
 
 console.info(
-  "%c CHOREMANDER-REWARDS-CARD %c v0.0.7 ",
+  "%c CHOREMINDER-REWARDS-CARD %c v0.0.7 ",
   "background: #9b59b6; color: white; font-weight: bold; border-radius: 4px 0 0 4px;",
   "background: #f1c40f; color: #333; font-weight: bold; border-radius: 0 4px 4px 0;"
 );

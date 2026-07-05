@@ -1,5 +1,5 @@
 /**
- * Choremander Points Card
+ * Choreminder Points Card
  * A parent-friendly Lovelace card for managing children's points/stars.
  * Allows adding or removing points with optional reasons.
  */
@@ -11,7 +11,7 @@ const LitElement = customElements.get("hui-masonry-view")
 const html = LitElement.prototype.html;
 const css = LitElement.prototype.css;
 
-class ChoremanderPointsCard extends LitElement {
+class ChoreminderPointsCard extends LitElement {
   static get properties() {
     return {
       hass: { type: Object },
@@ -510,7 +510,7 @@ class ChoremanderPointsCard extends LitElement {
 
   setConfig(config) {
     if (!config.entity) {
-      throw new Error("Please define an entity (choremander overview sensor)");
+      throw new Error("Please define an entity (choreminder overview sensor)");
     }
     this.config = {
       title: "Manage Points",
@@ -523,12 +523,12 @@ class ChoremanderPointsCard extends LitElement {
   }
 
   static getConfigElement() {
-    return document.createElement("choremander-points-card-editor");
+    return document.createElement("choreminder-points-card-editor");
   }
 
   static getStubConfig() {
     return {
-      entity: "sensor.choremander_overview",
+      entity: "sensor.choreminder_overview",
       title: "Manage Points",
     };
   }
@@ -583,7 +583,7 @@ class ChoremanderPointsCard extends LitElement {
       <div class="empty-state">
         <ha-icon icon="mdi:account-group"></ha-icon>
         <div class="message">No Children Found</div>
-        <div class="submessage">Add children in Choremander settings</div>
+        <div class="submessage">Add children in Choreminder settings</div>
       </div>
     `;
   }
@@ -767,7 +767,7 @@ class ChoremanderPointsCard extends LitElement {
     }
 
     try {
-      await this.hass.callService("choremander", service, serviceData);
+      await this.hass.callService("choreminder", service, serviceData);
 
       // Get points name from entity
       const entity = this.hass.states[this.config.entity];
@@ -806,7 +806,7 @@ class ChoremanderPointsCard extends LitElement {
 }
 
 // Card Editor
-class ChoremanderPointsCardEditor extends LitElement {
+class ChoreminderPointsCardEditor extends LitElement {
   static get properties() {
     return {
       hass: { type: Object },
@@ -867,9 +867,9 @@ class ChoremanderPointsCardEditor extends LitElement {
           type="text"
           .value="${this.config.entity || ""}"
           @input="${this._entityChanged}"
-          placeholder="sensor.choremander_overview"
+          placeholder="sensor.choreminder_overview"
         />
-        <small>The Choremander overview sensor entity</small>
+        <small>The Choreminder overview sensor entity</small>
       </div>
 
       <div class="form-group">
@@ -908,23 +908,23 @@ class ChoremanderPointsCardEditor extends LitElement {
 }
 
 // Register the cards
-customElements.define("choremander-points-card", ChoremanderPointsCard);
+customElements.define("choreminder-points-card", ChoreminderPointsCard);
 customElements.define(
-  "choremander-points-card-editor",
-  ChoremanderPointsCardEditor
+  "choreminder-points-card-editor",
+  ChoreminderPointsCardEditor
 );
 
 // Register with Home Assistant
 window.customCards = window.customCards || [];
 window.customCards.push({
-  type: "choremander-points-card",
-  name: "Choremander Points Card",
+  type: "choreminder-points-card",
+  name: "Choreminder Points Card",
   description: "A parent-friendly card to add or remove points from children",
   preview: true,
 });
 
 console.info(
-  "%c CHOREMANDER-POINTS-CARD %c Loaded ",
+  "%c CHOREMINDER-POINTS-CARD %c Loaded ",
   "background: #5c6bc0; color: white; font-weight: bold; border-radius: 4px 0 0 4px;",
   "background: #7986cb; color: white; font-weight: bold; border-radius: 0 4px 4px 0;"
 );

@@ -1,5 +1,5 @@
 homeassistant:
-  name: Choremander Dev
+  name: Choreminder Dev
   latitude: 37.7749
   longitude: -122.4194
   elevation: 0
@@ -13,4 +13,4 @@ default_config:
 logger:
   default: info
   logs:
-    custom_components.choremander: debug
+    custom_components.choreminder: debug
