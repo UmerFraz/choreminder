@@ -294,7 +294,7 @@ class ChoreminderApprovalsCard extends LitElement {
 
   static getStubConfig() {
     return {
-      entity: "sensor.pending_approvals",
+      entity: "sensor.choreminder_pending_approvals",
       title: "Pending Approvals",
     };
   }
@@ -658,7 +658,7 @@ class ChoreminderApprovalsCardEditor extends LitElement {
           type="text"
           .value="${this.config.entity || ""}"
           @input="${this._entityChanged}"
-          placeholder="sensor.pending_approvals"
+          placeholder="sensor.choreminder_pending_approvals"
         />
         <small>The pending approvals sensor entity</small>
       </div>
