@@ -58,7 +58,7 @@ Not all chores are equal. Some are easy (brush teeth), others take effort (homew
 ### Install via HACS
 
 1. **HACS** → Integrations → ⋮ menu → **Custom repositories**
-2. Add `https://github.com/vinnybad/choreminder` as an **Integration**
+2. Add `https://github.com/UmerFraz/choreminder` as an **Integration**
 3. Search "Choreminder" and install
 4. **Restart Home Assistant**
 
